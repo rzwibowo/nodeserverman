@@ -8,8 +8,8 @@ package nodeserverman;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.concurrent.TimeUnit;
-import javax.swing.JOptionPane;
+//import java.util.concurrent.TimeUnit;
+//import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,9 +27,6 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
-        jButton1.setEnabled(true);
-        jButton2.setEnabled(false);
-        jButton3.setEnabled(false);
         getUID();
         jLabel4.setText(nama_modul);
         jLabel1.setText(getCurrentDir());
@@ -254,6 +251,9 @@ public class MainWindow extends javax.swing.JFrame {
                     new InputStreamReader(process.getInputStream()));
             jLabel6.setText("-");
             jLabel8.setText("STOPPED");
+            jButton1.setEnabled(true);
+            jButton2.setEnabled(false);
+            jButton3.setEnabled(false);
 
             String line;
             int i = 0;
