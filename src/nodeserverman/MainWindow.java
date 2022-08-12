@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,15 +20,19 @@ import javax.swing.table.DefaultTableModel;
 public class MainWindow extends javax.swing.JFrame {
 
     DefaultTableModel model;
+    String nama_modul;
 
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
         initComponents();
-        model = (DefaultTableModel) jTable1.getModel();
-        jLabel2.setText("Lokasi: " + getCurrentDir());
-        getList();
+        jButton1.setEnabled(true);
+        jButton2.setEnabled(false);
+        jButton3.setEnabled(false);
+        getUID();
+        jLabel4.setText(nama_modul);
+        jLabel1.setText(getCurrentDir());
     }
 
     /**
@@ -39,56 +44,23 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("NodeServerMan");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Proses Berjalan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 11))); // NOI18N
-
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "", "UID", "Script Location"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jTable1);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-        );
-
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jButton1.setText("Start");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +68,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jButton2.setText("Restart");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +76,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jButton3.setText("Stop");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,13 +84,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Stop Semua");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
+        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jButton5.setText("Refresh");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,9 +92,25 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Harap refresh setelah menekan salah satu tombol di bawah");
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel4.setText("modul");
+        jLabel4.setToolTipText("");
+
+        jLabel5.setText("Lokasi");
+
+        jLabel1.setText("lokasi");
+
+        jLabel3.setText("UID");
+
+        jLabel6.setText("uid");
+
+        jLabel7.setText("Status");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel8.setText("status");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,22 +119,29 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(104, 104, 104)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton5))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1))
-                            .addComponent(jLabel2))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel5))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel8))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -158,19 +149,27 @@ public class MainWindow extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(2, 2, 2)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
+                    .addComponent(jLabel5)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jButton5))
                 .addContainerGap())
         );
 
@@ -184,33 +183,20 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        getList();
+        getUID();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        int row = jTable1.getSelectedRowCount();
-        if (row < 1) {
-            JOptionPane.showMessageDialog(null, "Harap pilih salah satu proses");
-        } else {
-            endProcess();
-        }
+
+        endProcess();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        int row = jTable1.getSelectedRowCount();
-        if (row < 1) {
-            JOptionPane.showMessageDialog(null, "Harap pilih salah satu proses");
-        } else {
-            restartProcess();
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        endAll();
-    }//GEN-LAST:event_jButton4ActionPerformed
+        restartProcess();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,12 +208,13 @@ public class MainWindow extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
+            javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -247,32 +234,43 @@ public class MainWindow extends javax.swing.JFrame {
         });
     }
 
-    public void getList() {
-        model.setRowCount(0);
+    private String getUID() {
         ProcessBuilder pb = new ProcessBuilder();
         pb.command("cmd.exe", "/c", "forever list");
+        StringBuilder output = new StringBuilder();
+
+        String uid = "";
+        String[] proj_location = getCurrentDir().replaceAll("\\\\", "/").split("/");
+        String proj_name = proj_location[proj_location.length - 1];
+
+        System.out.println(getCurrentDir().replaceAll("\\\\", "/"));
+
+        nama_modul = proj_name;
 
         try {
             Process process = pb.start();
 
-            StringBuilder output = new StringBuilder();
-
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(process.getInputStream()));
+            jLabel6.setText("-");
+            jLabel8.setText("STOPPED");
 
             String line;
             int i = 0;
             while ((line = reader.readLine()) != null) {
                 if (i >= 2) {
                     String[] perpecahan = line.split(" ");
-                    Object[] o = new Object[3];
-                    o[0] = perpecahan[4];
-                    o[1] = perpecahan[5];
-                    o[2] = perpecahan[8];
-                    model.addRow(o);
-                    output.append(line + "\n");
-                }
 
+                    if (perpecahan[8].contains(proj_name)) {
+                        uid = perpecahan[5];
+                        output.append(line + "\n");
+                        jLabel6.setText(uid);
+                        jLabel8.setText("RUNNING");
+                        jButton1.setEnabled(false);
+                        jButton2.setEnabled(true);
+                        jButton3.setEnabled(true);
+                    }
+                }
                 i++;
             }
 
@@ -289,13 +287,17 @@ public class MainWindow extends javax.swing.JFrame {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return uid;
     }
 
+//    
     public void endProcess() {
-        String uid = (String) jTable1.getValueAt(jTable1.getSelectedRow(), 1);
+        String uid = getUID();
 
         ProcessBuilder pb = new ProcessBuilder();
         pb.command("cmd.exe", "/c", "forever stop " + uid);
+
+        jLabel8.setText("STOPPING...");
 
         try {
             Process process = pb.start();
@@ -303,6 +305,10 @@ public class MainWindow extends javax.swing.JFrame {
             int exitVal = process.waitFor();
             if (exitVal == 0) {
                 System.out.println("Success!");
+                getUID();
+                jButton1.setEnabled(true);
+                jButton2.setEnabled(false);
+                jButton3.setEnabled(false);
             } else {
                 //abnormal...
             }
@@ -315,10 +321,12 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     public void restartProcess() {
-        String uid = (String) jTable1.getValueAt(jTable1.getSelectedRow(), 1);
+        String uid = getUID();
 
         ProcessBuilder pb = new ProcessBuilder();
         pb.command("cmd.exe", "/c", "forever restart " + uid);
+
+        jLabel8.setText("RESTARTING...");
 
         try {
             Process process = pb.start();
@@ -326,6 +334,7 @@ public class MainWindow extends javax.swing.JFrame {
             int exitVal = process.waitFor();
             if (exitVal == 0) {
                 System.out.println("Success!");
+                getUID();
             } else {
                 //abnormal...
             }
@@ -342,13 +351,18 @@ public class MainWindow extends javax.swing.JFrame {
         ProcessBuilder pb = new ProcessBuilder();
         pb.command("cmd.exe", "/c", "npm start");
 
+        jLabel8.setText("STARTING...");
+
         try {
             Process process = pb.start();
 
             int exitVal = process.waitFor();
             if (exitVal == 0) {
                 System.out.println("Success!");
-                getList();
+                getUID();
+                jButton1.setEnabled(false);
+                jButton2.setEnabled(true);
+                jButton3.setEnabled(true);
             } else {
                 //abnormal...
             }
@@ -360,27 +374,6 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }
 
-    public void endAll() {
-        ProcessBuilder pb = new ProcessBuilder();
-        pb.command("cmd.exe", "/c", "forever stopall");
-
-        try {
-            Process process = pb.start();
-
-            int exitVal = process.waitFor();
-            if (exitVal == 0) {
-                System.out.println("Success!");
-            } else {
-                //abnormal...
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-    
     public String getCurrentDir() {
         String dir;
         dir = System.getProperty("user.dir");
@@ -391,12 +384,14 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }
